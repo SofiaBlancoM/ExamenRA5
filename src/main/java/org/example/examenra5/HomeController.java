@@ -9,25 +9,42 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeController {
 
     @FXML
     public VBox root;
 
+    private String urlDb = "jdbc:sqlite:db/chinook.db";
+
     @FXML
     public void onOpenButtonAction(ActionEvent event) {
 
-        try(InputStream inputStream = MainApplication.class.getResourceAsStream("/playlist-report.jrxml")){
+        String jasperReportFilePath = "/report-playlist.jrxml";
 
+        try(InputStream inputStream = MainApplication.class.getResourceAsStream(jasperReportFilePath)){
+
+            System.out.println("Compilando: " + jasperReportFilePath);
             JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
+
+            Connection connection = DriverManager.getConnection(urlDb);
+
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("AUTOR", "Sofía Blanco Méndez");
+            parametros.put("P_PLAYLIST_ID",1);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, connection);
             JasperViewer.viewReport(jasperPrint, false);
 
         }
-        catch (JRException | IOException e){
+        catch (JRException | SQLException | IOException e){
             System.out.println("Error al abrir el informe");
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
     }

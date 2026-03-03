@@ -141,7 +141,7 @@ FROM playlists
 				<imageExpression><![CDATA["images/logo.jpg"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="190" y="30" width="100" height="20" uuid="a78aaf86-47e5-40ba-a55f-e9d518fd9a7b"/>
+				<reportElement x="190" y="30" width="240" height="20" uuid="a78aaf86-47e5-40ba-a55f-e9d518fd9a7b"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>

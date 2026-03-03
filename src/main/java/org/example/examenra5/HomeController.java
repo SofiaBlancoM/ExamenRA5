@@ -3,6 +3,7 @@ package org.example.examenra5;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -20,6 +21,9 @@ public class HomeController {
     @FXML
     public VBox root;
 
+    @FXML
+    public TextField playlistIdTextField;
+
     private String urlDb = "jdbc:sqlite:db/chinook.db";
 
     @FXML
@@ -36,7 +40,7 @@ public class HomeController {
 
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("AUTOR", "Sofía Blanco Méndez");
-            parametros.put("P_PLAYLIST_ID",1);
+            parametros.put("P_PLAYLIST_ID", playlistIdTextField.getText());
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, connection);
             JasperViewer.viewReport(jasperPrint, false);

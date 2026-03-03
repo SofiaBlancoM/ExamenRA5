@@ -1,5 +1,6 @@
 package org.example.examenra5;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -10,10 +11,13 @@ public class HomeController {
     public VBox root;
 
     @FXML
-    private Label welcomeText;
+    public void onCloseButtonAction(ActionEvent event) {
+
+    }
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    public void onOpenButtonAction(ActionEvent event) {
+
     }
+
 }

@@ -1,4 +1,23 @@
 .root {
-    -fx-background-color: #1e1e2f;
+    -fx-background-color: #918EF4;
+}
+.button {
+    -fx-background-color: #6C63FF;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 10 16;
+    -fx-font-weight: 600;
+}
+
+.button:hover {
+    -fx-background-color: #5A52E0;
+}
+
+.close-button {
+    -fx-background-color: #EF4444;
+}
+
+.close-button:hover {
+    -fx-background-color: #DC2626;
 }
 
